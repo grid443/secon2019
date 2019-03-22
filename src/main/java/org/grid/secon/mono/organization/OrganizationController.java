@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/organization")
 public class OrganizationController {
     private final OrganizationRepository repository;
 
@@ -17,11 +18,11 @@ public class OrganizationController {
 
     @RequestMapping("/")
     public String redirectPage() {
-        return "redirect:/organisations";
+        return "redirect:/organization/all";
     }
 
-    @GetMapping("/organisations")
-    public String all(Model model) {
+    @GetMapping("/list")
+    public String list(Model model) {
         model.addAttribute("orgs", repository.findAll());
         return "organisation/list";
     }

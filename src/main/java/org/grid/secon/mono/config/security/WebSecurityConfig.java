@@ -5,10 +5,13 @@ import org.grid.secon.mono.config.security.userdetails.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -25,10 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/organisation/**").access("hasAnyAuthority('ACCOUNTANT', 'AUDITOR')")
-                .antMatchers("/department/**").access("hasAnyAuthority('ACCOUNTANT', 'AUDITOR')")
-                .antMatchers("/employee/**").access("hasAnyAuthority('ACCOUNTANT')")
+                .antMatchers("/organization/**").hasAnyRole("ACCOUNTANT'")
+                .antMatchers("/department/**").hasAnyRole("ACCOUNTANT", "AUDITOR")
+                .antMatchers("/employee/**").hasAnyRole("ACCOUNTANT")
                 .antMatchers("/login", "/login?error").anonymous()
+                .anyRequest().authenticated()
                 .and()
             .exceptionHandling()
                 .accessDeniedPage("/accessDenied")
@@ -45,5 +49,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
         return new DatabaseUserDetailsService(userRepository);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService())
+                .passwordEncoder(passwordEncoder());
     }
 }
