@@ -28,10 +28,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/organization/**").hasAnyRole("ACCOUNTANT'")
-                .antMatchers("/department/**").hasAnyRole("ACCOUNTANT", "AUDITOR")
-                .antMatchers("/employee/**").hasAnyRole("ACCOUNTANT")
-                .antMatchers("/login", "/login?error").anonymous()
+                .mvcMatchers("/organization/read").hasAuthority("READ_ORGANIZATION")
+                .mvcMatchers("/organization/edit").hasAuthority("EDIT_ORGANIZATION")
+                .mvcMatchers("/organization/**").hasAnyRole("ACCOUNTANT", "AUDITOR", "ORG_AUDITOR")
+                .mvcMatchers("/department/**").hasAnyRole("ACCOUNTANT", "AUDITOR")
+                .mvcMatchers("/employee/**").hasRole("ACCOUNTANT")
+                .mvcMatchers("/login", "/login?error").anonymous()
                 .anyRequest().authenticated()
                 .and()
             .exceptionHandling()

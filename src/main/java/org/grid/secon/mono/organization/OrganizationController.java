@@ -16,14 +16,23 @@ public class OrganizationController {
         this.repository = repository;
     }
 
-    @RequestMapping("/")
-    public String redirectPage() {
-        return "redirect:/organization/all";
-    }
-
     @GetMapping("/list")
     public String list(Model model) {
         model.addAttribute("orgs", repository.findAll());
-        return "organisation/list";
+        return "organization/list";
+    }
+
+    @GetMapping("/read")
+    public String read(Model model) {
+        model.addAttribute("orgs", repository.findAll());
+        model.addAttribute("read", true);
+        return "organization/list";
+    }
+
+    @GetMapping("/edit")
+    public String edit(Model model) {
+        model.addAttribute("orgs", repository.findAll());
+        model.addAttribute("edit", true);
+        return "organization/list";
     }
 }

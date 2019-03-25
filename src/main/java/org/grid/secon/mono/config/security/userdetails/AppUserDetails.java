@@ -1,23 +1,24 @@
 package org.grid.secon.mono.config.security.userdetails;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 
 public class AppUserDetails implements UserDetails {
 
     private final User user;
 
-    public AppUserDetails(User user) {
+    private final Collection<GrantedAuthority> authorities;
+
+    public AppUserDetails(User user, Collection<GrantedAuthority> authorities) {
         this.user = user;
+        this.authorities = authorities;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
+        return authorities;
     }
 
     @Override
