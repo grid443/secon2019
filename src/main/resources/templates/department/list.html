@@ -12,17 +12,15 @@
                 <tr>
                     <th> name </th>
                     <th> location </th>
-                    <th> users </th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:if="${departments.empty}">
-                    <td colspan="3"> No Departments Available </td>
+                    <td colspan="2"> No Departments Available </td>
                 </tr>
                 <tr th:each="item : ${departments}">
                     <td><span th:text="${item.name}"></span></td>
                     <td><span th:text="${item.location}"></span></td>
-                    <td><a th:href="@{/employee/list(departmentId=${item.id})}">Employees</a></td>
                 </tr>
             </tbody>
         </table>

@@ -32,7 +32,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/organization/edit").hasAuthority("EDIT_ORGANIZATION")
                 .mvcMatchers("/organization/**").hasAnyRole("ACCOUNTANT", "AUDITOR", "ORG_AUDITOR")
                 .mvcMatchers("/department/**").hasAnyRole("ACCOUNTANT", "AUDITOR")
-                .mvcMatchers("/employee/**").hasRole("ACCOUNTANT")
                 .mvcMatchers("/login", "/login?error").anonymous()
                 .anyRequest().authenticated()
                 .and()
