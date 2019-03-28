@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: organization-ui
-  cloud:
-    config:
-      uri: http://localhost:8888

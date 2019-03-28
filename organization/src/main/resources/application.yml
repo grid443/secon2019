@@ -1,0 +1,15 @@
+server:
+  port: 8702
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:organizations
+    username: sa
+    password: 123456
+    driverClassName: org.h2.Driver

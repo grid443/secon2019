@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-cargo-plugin:2.6.1'
+    }
+}
+
+apply plugin: 'com.bmuschko.cargo'
+
+repositories {
+    mavenCentral()
+}
+
+ext.uaaVersion = '4.27.0'
+ext.tomcatVersion = '8.5.39'
+
+configurations {
+    uaa
+}
+
+dependencies {
+    uaa("org.cloudfoundry.identity:cloudfoundry-identity-uaa:${uaaVersion}@war") {
+        artifact {
+            name = "cloudfoundry-identity-uaa"
+            extension = 'war'
+            type = 'war'
+        }
+    }
+}
+
+task downloadUAA(type: Copy) {
+    from configurations.uaa
+    into "$buildDir"
+}
+
+cargoRunLocal.dependsOn downloadUAA
+
+task uaa(dependsOn: cargoRunLocal) {}
+
+cargo {
+    containerId = 'tomcat8x'
+    port = 8700
+
+    deployable {
+        file = file("$buildDir/cloudfoundry-identity-uaa-${uaaVersion}.war")
+        context = 'uaa'
+    }
+
+    local {
+        outputFile = file("$buildDir/uaa-server.log")
+        installer {
+            installUrl = "https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/${tomcatVersion}/tomcat-${tomcatVersion}.zip"
+
+            downloadDir = file("$buildDir/download")
+            extractDir = file("$buildDir/extract")
+        }
+        systemProperties {
+            property "UAA_CONFIG_PATH", "$projectDir"
+        }
+    }
+}

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Access denied</title>
+        <title th:if="${errorMessage == null}">Error: Internal Server Error</title>
+        <title th:if="${errorMessage != null}">Error: ${errorMessage}</title>
     </head>
     <body>
         <img src="/img/error.png" align="center">

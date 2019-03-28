@@ -1,0 +1,38 @@
+server:
+  port: 8701
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          organization-ui:
+            provider: uaa
+            client-id: organization-ui
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid,profile,email
+        provider:
+          uaa:
+            authorization-uri: http://localhost:8700/uaa/oauth/authorize
+            token-uri: http://localhost:8700/uaa/oauth/token
+            user-info-uri: http://localhost:8700/uaa/userinfo
+            user-name-attribute: sub
+            jwk-set-uri: http://localhost:8700/uaa/token_keys
+
+oauth2:
+  resource:
+    services:
+      organization-resource:
+        uri: http://localhost:8702/organization
+      depertment-resource:
+        uri: http://localhost:8703/department
