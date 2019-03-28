@@ -1,4 +1,4 @@
-package org.grid.secon.department.config.security;
+package org.grid.secon.organization.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
@@ -7,16 +7,19 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final OAuth2ResourceServerProperties resourceServerProperties;
 
     @Autowired
-    private OAuth2ResourceServerProperties resourceServerProperties;
+    public SecurityConfig(OAuth2ResourceServerProperties resourceServerProperties) {
+        this.resourceServerProperties = resourceServerProperties;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .mvcMatchers("/department/**").hasAuthority("SCOPE_department")
+                .mvcMatchers("/organization/**").hasAuthority("SCOPE_organization")
                 .anyRequest().authenticated()
                 .and()
             .oauth2ResourceServer()

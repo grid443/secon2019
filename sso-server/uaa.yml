@@ -48,9 +48,9 @@ scim:
     authority-organization.read: Allow access to the organization info
     authority-organization.edit: Allow access to edit the organization info
   users:
-  - accountant|accountant|ivan.ivanov@hornsandhoofs.org|ivan|ivanov|uaa.accountant,profile,email,authority-organization,authority-department,authority-organization.read,authority-organization.edit
-  - auditor|auditor|petr.petrov@hornsandhoofs.org|petr|petrov|uaa.auditor,profile,email,authority-organization,authority-department,authority-organization.read
-  - org_auditor|org_auditor|sidr.sidorov@hornsandhoofs.org|sidr|sidorov|uaa.org_auditor,profile,email,authority-organization,authority-organization.read
+  - accountant|accountant|ivan.ivanov@hornsandhoofs.org|ivan|ivanov|uaa.accountant,profile,email,organization,department,organization.read,organization.edit
+  - auditor|auditor|petr.petrov@hornsandhoofs.org|petr|petrov|uaa.auditor,profile,email,organization,department,organization.read
+  - org_auditor|org_auditor|sidr.sidorov@hornsandhoofs.org|sidr|sidorov|uaa.org_auditor,profile,email,organization,organization.read
 
 jwt:
   token:
