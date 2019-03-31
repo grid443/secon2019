@@ -22,31 +22,31 @@ oauth:
       name: Organization UI
       secret: secret
       authorized-grant-types: authorization_code
-      scope: openid,profile,email
+      scope: openid,organization,department
       authorities: uaa.resource
       redirect-uri: http://localhost:8701/login/oauth2/code/organization-ui
-    organization-resource:
+    organization-read:
       name: Organization Resource
       secret: secret
       authorized-grant-types: authorization_code
-      scope: authority-organization
+      scope: organization.read
       authorities: uaa.resource
-      redirect-uri: http://localhost:8701/organization/list
-    depertment-resource:
+      redirect-uri: http://localhost:8701/organization/read
+    organization-edit:
       name: Department Resource
       secret: secret
       authorized-grant-types: authorization_code
-      scope: authority-department
+      scope: organization.edit
       authorities: uaa.resource
-      redirect-uri: http://localhost:8701/department/list
+      redirect-uri: http://localhost:8701/organization/edit
 
 scim:
   groups:
     email: Access your email address
-    authority-organization: Allow access to the organizations list
-    authority-department: Allow access to the departments list
-    authority-organization.read: Allow access to the organization info
-    authority-organization.edit: Allow access to edit the organization info
+    organization: Allow access to the organizations list
+    department: Allow access to the departments list
+    organization.read: Allow access to the organization info
+    organization.edit: Allow access to edit the organization info
   users:
   - accountant|accountant|ivan.ivanov@hornsandhoofs.org|ivan|ivanov|uaa.accountant,profile,email,organization,department,organization.read,organization.edit
   - auditor|auditor|petr.petrov@hornsandhoofs.org|petr|petrov|uaa.auditor,profile,email,organization,department,organization.read

@@ -1,4 +1,4 @@
-package org.grid.secon.organization;
+package org.grid.secon.organization.web;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,6 @@ import java.util.UUID;
 @Entity
 public class Organization {
     @Id
-    @GeneratedValue
     private UUID id;
 
     private String type;

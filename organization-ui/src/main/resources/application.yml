@@ -6,6 +6,7 @@ logging:
     root: INFO
     org.springframework.web: INFO
     org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
 
 spring:
   thymeleaf:
@@ -20,7 +21,21 @@ spring:
             client-secret: secret
             authorization-grant-type: authorization_code
             redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope: openid,profile,email
+            scope: openid,organization,department
+          organization-read:
+            client-id: organization-read
+            provider: uaa
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/organization/read"
+            scope: organization.read
+          organization-edit:
+            provider: uaa
+            client-id: organization-edit
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri-template: "{baseUrl}/organization/edit"
+            scope: organization.edit
         provider:
           uaa:
             authorization-uri: http://localhost:8700/uaa/oauth/authorize
@@ -28,11 +43,3 @@ spring:
             user-info-uri: http://localhost:8700/uaa/userinfo
             user-name-attribute: sub
             jwk-set-uri: http://localhost:8700/uaa/token_keys
-
-oauth2:
-  resource:
-    services:
-      organization-resource:
-        uri: http://localhost:8702/organization
-      depertment-resource:
-        uri: http://localhost:8703/department

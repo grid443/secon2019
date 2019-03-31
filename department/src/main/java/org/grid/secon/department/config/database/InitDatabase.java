@@ -1,7 +1,7 @@
 package org.grid.secon.department.config.database;
 
-import org.grid.secon.department.Department;
-import org.grid.secon.department.DepartmentRepository;
+import org.grid.secon.department.web.Department;
+import org.grid.secon.department.web.DepartmentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

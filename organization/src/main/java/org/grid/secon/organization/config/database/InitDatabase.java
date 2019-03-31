@@ -1,7 +1,7 @@
 package org.grid.secon.organization.config.database;
 
-import org.grid.secon.organization.Organization;
-import org.grid.secon.organization.OrganizationRepository;
+import org.grid.secon.organization.web.Organization;
+import org.grid.secon.organization.web.OrganizationRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

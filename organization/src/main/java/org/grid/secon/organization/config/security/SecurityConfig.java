@@ -19,6 +19,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
+                .mvcMatchers("/organization/read").hasAuthority("SCOPE_organization.read")
+                .mvcMatchers("/organization/edit").hasAuthority("SCOPE_organization.edit")
                 .mvcMatchers("/organization/**").hasAuthority("SCOPE_organization")
                 .anyRequest().authenticated()
                 .and()

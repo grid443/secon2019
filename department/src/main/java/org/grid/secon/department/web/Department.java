@@ -1,4 +1,4 @@
-package org.grid.secon.department;
+package org.grid.secon.department.web;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
