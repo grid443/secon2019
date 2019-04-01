@@ -50,6 +50,7 @@ cargo {
 
     local {
         outputFile = file("$buildDir/uaa-server.log")
+        startStopTimeout = 240000
         installer {
             installUrl = "https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/${tomcatVersion}/tomcat-${tomcatVersion}.zip"
 
