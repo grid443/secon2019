@@ -1,0 +1,9 @@
+server:
+  port: 8704
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8700/uaa/token_keys

@@ -7,10 +7,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final OAuth2ResourceServerProperties resourceServerProperties;
 
     @Autowired
-    private OAuth2ResourceServerProperties resourceServerProperties;
+    public SecurityConfig(OAuth2ResourceServerProperties resourceServerProperties) {
+        this.resourceServerProperties = resourceServerProperties;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -21,6 +25,9 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .oauth2ResourceServer()
                 .jwt()
-                    .jwkSetUri(this.resourceServerProperties.getJwt().getJwkSetUri());
+                    .jwkSetUri(this.resourceServerProperties.getJwt().getJwkSetUri())
+                    .and()
+                .and()
+            .oauth2Client();
     }
 }

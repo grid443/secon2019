@@ -39,7 +39,12 @@ oauth:
       scope: organization.edit
       authorities: uaa.resource
       redirect-uri: http://localhost:8701/organization/edit
-
+    department-validate:
+      name: department-validate
+      secret: secret
+      authorized-grant-types: client_credentials
+      scope: department.validate
+      authorities: department.validate
 scim:
   groups:
     email: Access your email address
@@ -47,9 +52,10 @@ scim:
     department: Allow access to the departments list
     organization.read: Allow access to the organization info
     organization.edit: Allow access to edit the organization info
+    department.validate: Allow to access department validation info
   users:
   - accountant|accountant|ivan.ivanov@hornsandhoofs.org|ivan|ivanov|uaa.accountant,profile,email,organization,department,organization.read,organization.edit
-  - auditor|auditor|petr.petrov@hornsandhoofs.org|petr|petrov|uaa.auditor,profile,email,organization,department,organization.read
+  - auditor|auditor|petr.petrov@hornsandhoofs.org|petr|petrov|uaa.auditor,profile,email,organization,department,organization.read,department.validate
   - org_auditor|org_auditor|sidr.sidorov@hornsandhoofs.org|sidr|sidorov|uaa.org_auditor,profile,email,organization,organization.read
 
 jwt:

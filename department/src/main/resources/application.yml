@@ -19,3 +19,15 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8700/uaa/token_keys
+      client:
+        registration:
+          department-validate:
+            provider: uaa
+            client-id: department-validate
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            scope: department.validate
+        provider:
+          uaa:
+            token-uri: http://localhost:8700/uaa/oauth/token
+            jwk-set-uri: http://localhost:8700/uaa/token_keys

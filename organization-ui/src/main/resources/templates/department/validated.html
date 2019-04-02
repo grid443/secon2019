@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Departments</title>
+        <title>Validated Department</title>
     </head>
     <body>
         <form th:action="@{/logout}" method="post">
@@ -12,17 +12,14 @@
                 <tr>
                     <th> name </th>
                     <th> location </th>
-                    <th> validate </th>
+                    <th> valid </th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:if="${departments.empty}">
-                    <td colspan="3"> No Departments Available </td>
-                </tr>
-                <tr th:each="item : ${departments}">
-                    <td><span th:text="${item.name}"></span></td>
-                    <td><span th:text="${item.location}"></span></td>
-                    <td><a th:href="@{/department/validate(departmentId=${item.id})}"> Validate </a></td>
+                <tr>
+                    <td><span th:text="${name}"></span></td>
+                    <td><span th:text="${location}"></span></td>
+                    <td><span th:text="${valid}"></span></td>
                 </tr>
             </tbody>
         </table>
