@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Organizations</title>
+    </head>
+    <body>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th> name </th>
+                    <th> departments </th>
+                    <th> read </th>
+                    <th> edit </th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr th:if="${orgs.empty}">
+                    <td colspan="4"> No Organizations Available </td>
+                </tr>
+                <tr th:each="org : ${orgs}">
+                    <td><span th:text="${org.name}"></span></td>
+                    <td><a th:href="@{/department/list(orgId=${org.id})}"> Departments </a></td>
+                    <td><a th:href="@{/organization/read}"> Read </a></td>
+                    <td><a th:href="@{/organization/edit}"> Edit </a></td>
+                </tr>
+            </tbody>
+        </table>
+        <tbody>
+        <div th:if="${read}">
+            <p>Read access</p>
+        </div>
+        <div th:if="${edit}">
+            <p>Edit access</p>
+        </div>
+    </body>
+</html>
