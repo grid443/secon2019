@@ -17,8 +17,6 @@ oauth:
     - uaa.user
     - approvals.me
     - oauth.approvals
-    - organization
-    - department
   clients:
     organization-ui:
       name: Organization UI
@@ -32,21 +30,21 @@ oauth:
       secret: secret
       authorized-grant-types: authorization_code
       scope: organization.read
-      authorities: uaa.user
+      authorities: uaa.resource
       redirect-uri: http://localhost:8701/organization/read
     organization-edit:
       name: Department Resource
       secret: secret
       authorized-grant-types: authorization_code
       scope: organization.edit
-      authorities: uaa.user
+      authorities: uaa.resource
       redirect-uri: http://localhost:8701/organization/edit
     department-validate:
       name: department-validate
       secret: secret
       authorized-grant-types: client_credentials
       scope: department.validate
-      authorities: uaa.user
+      authorities: department.validate
 scim:
   groups:
     email: Access your email address
