@@ -23,7 +23,7 @@ oauth:
       secret: secret
       authorized-grant-types: authorization_code
       scope: openid,organization,department
-      authorities: organization,department
+      authorities: uaa.resource
       redirect-uri: http://localhost:8701/login/oauth2/code/organization-ui
     organization-read:
       name: Organization Resource
