@@ -7,9 +7,12 @@ import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -34,10 +37,13 @@ public class ScopedOidcUserService extends OidcUserService {
         if (CollectionUtils.isEmpty(scopes)) {
             return user.getAuthorities();
         }
-        return user.getAuthorities()
-                .stream()
-                .map(authority -> SCOPE_AUTHORITY_PREFIX + authority)
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        Set<GrantedAuthority> authorities = new HashSet<>(user.getAuthorities());
+        for (String scope : scopes) {
+            if ("openid".equals(scope)) {
+                continue;
+            }
+            authorities.add(new SimpleGrantedAuthority(SCOPE_AUTHORITY_PREFIX + scope));
+        }
+        return authorities;
     }
 }

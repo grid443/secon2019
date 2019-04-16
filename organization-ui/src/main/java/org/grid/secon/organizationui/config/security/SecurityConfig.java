@@ -21,7 +21,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint().oidcUserService(oidcUserService())
                 .and()
                 .loginPage("/oauth2/authorization/organization-ui")
-                .failureUrl("/login?error")
                 .permitAll()
                 .and()
             .logout()
