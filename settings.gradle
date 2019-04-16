@@ -1,7 +1,7 @@
 rootProject.name = 'secon-2019'
 
 include 'sso-server'
-include 'organization-ui'
+include 'client-app'
 include 'organization'
 include 'department'
 include 'validation'
