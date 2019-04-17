@@ -15,9 +15,9 @@ spring:
     oauth2:
       client:
         registration:
-          organization-ui:
+          client-app:
             provider: uaa
-            client-id: organization-ui
+            client-id: client-app
             client-secret: secret
             authorization-grant-type: authorization_code
             redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"

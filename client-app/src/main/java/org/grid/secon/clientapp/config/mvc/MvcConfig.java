@@ -1,4 +1,4 @@
-package org.grid.secon.organizationui.config.mvc;
+package org.grid.secon.clientapp.config.mvc;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

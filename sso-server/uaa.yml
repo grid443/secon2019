@@ -18,13 +18,13 @@ oauth:
     - approvals.me
     - oauth.approvals
   clients:
-    organization-ui:
-      name: Organization UI
+    client-app:
+      name: Client App
       secret: secret
       authorized-grant-types: authorization_code
       scope: openid,organization,department
       authorities: uaa.resource
-      redirect-uri: http://localhost:8701/login/oauth2/code/organization-ui
+      redirect-uri: http://localhost:8701/login/oauth2/code/client-app
     organization-read:
       name: Organization Resource
       secret: secret

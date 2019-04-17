@@ -1,4 +1,4 @@
-package org.grid.secon.organizationui.web;
+package org.grid.secon.clientapp.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;

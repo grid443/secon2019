@@ -1,4 +1,4 @@
-package org.grid.secon.organizationui;
+package org.grid.secon.clientapp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package org.grid.secon.organizationui.config.security;
+package org.grid.secon.clientapp.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

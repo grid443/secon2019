@@ -1,8 +1,8 @@
-package org.grid.secon.organizationui;
+package org.grid.secon.clientapp;
 
-import org.grid.secon.organizationui.config.mvc.MvcConfig;
-import org.grid.secon.organizationui.config.security.SecurityConfig;
-import org.grid.secon.organizationui.config.security.WebClientConfig;
+import org.grid.secon.clientapp.config.mvc.MvcConfig;
+import org.grid.secon.clientapp.config.security.SecurityConfig;
+import org.grid.secon.clientapp.config.security.WebClientConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
