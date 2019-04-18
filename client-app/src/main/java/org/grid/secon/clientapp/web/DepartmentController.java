@@ -28,7 +28,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/list")
-    public ModelAndView departmentsByOrg(@RegisteredOAuth2AuthorizedClient("organization-ui") OAuth2AuthorizedClient authorizedClient, @RequestParam UUID orgId) {
+    public ModelAndView departmentsByOrg(@RegisteredOAuth2AuthorizedClient("client-app") OAuth2AuthorizedClient authorizedClient, @RequestParam UUID orgId) {
         String uri = "http://localhost:8703/department/list?orgId=" + orgId.toString();
         List<Map<String, String>> departments = callService(
                 authorizedClient,
@@ -40,7 +40,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/all")
-    public ModelAndView departments(@RegisteredOAuth2AuthorizedClient("organization-ui") OAuth2AuthorizedClient authorizedClient) {
+    public ModelAndView departments(@RegisteredOAuth2AuthorizedClient("client-app") OAuth2AuthorizedClient authorizedClient) {
         String uri = "http://localhost:8703/department/all";
         List<Map<String, String>> departments = callService(
                 authorizedClient,
@@ -52,7 +52,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/validate")
-    public ModelAndView validate(@RegisteredOAuth2AuthorizedClient("organization-ui") OAuth2AuthorizedClient authorizedClient, @RequestParam UUID departmentId) {
+    public ModelAndView validate(@RegisteredOAuth2AuthorizedClient("client-app") OAuth2AuthorizedClient authorizedClient, @RequestParam UUID departmentId) {
         String uri = "http://localhost:8703/department/validate?departmentId=" + departmentId.toString();
         Map<String, String> department = callService(
                 authorizedClient,

@@ -27,14 +27,14 @@ public class OrganizationController {
     }
 
     @GetMapping("/list")
-    public ModelAndView list(@RegisteredOAuth2AuthorizedClient("organization-ui") OAuth2AuthorizedClient authorizedClient) {
+    public ModelAndView list(@RegisteredOAuth2AuthorizedClient("client-app") OAuth2AuthorizedClient authorizedClient) {
         List<Map<String, String>> organizations = loadOrganizations(authorizedClient);
         return new ModelAndView("organization/list", Collections.singletonMap("orgs", organizations));
     }
 
     @GetMapping("/read")
     public ModelAndView read(
-            @RegisteredOAuth2AuthorizedClient("organization-ui") OAuth2AuthorizedClient uiClient,
+            @RegisteredOAuth2AuthorizedClient("client-app") OAuth2AuthorizedClient uiClient,
             @RegisteredOAuth2AuthorizedClient("organization-read") OAuth2AuthorizedClient readClient
     ) {
         Map<String, Object> model = new HashMap<>();
@@ -45,7 +45,7 @@ public class OrganizationController {
 
     @GetMapping("/edit")
     public ModelAndView edit(
-            @RegisteredOAuth2AuthorizedClient("organization-ui") OAuth2AuthorizedClient uiClient,
+            @RegisteredOAuth2AuthorizedClient("client-app") OAuth2AuthorizedClient uiClient,
             @RegisteredOAuth2AuthorizedClient("organization-edit") OAuth2AuthorizedClient editClient
     ) {
         Map<String, Object> model = new HashMap<>();
