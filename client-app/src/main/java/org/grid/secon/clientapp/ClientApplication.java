@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Import;
 
 @Import({MvcConfig.class, SecurityConfig.class, WebClientConfig.class})
 @SpringBootApplication
-public class OrganizationUiApplication {
+public class ClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrganizationUiApplication.class, args);
+        SpringApplication.run(ClientApplication.class, args);
     }
 }
