@@ -20,11 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .oauth2Login()
                 .userInfoEndpoint().oidcUserService(oidcUserService())
                 .and()
-                .loginPage("/oauth2/authorization/organization-ui")
+                .loginPage("/oauth2/authorization/client-app")
                 .permitAll()
                 .and()
             .logout()
-                .logoutSuccessUrl("http://localhost:8700/uaa/logout.do?client_id=organization-ui&redirect=http://localhost:8701")
+                .logoutSuccessUrl("http://localhost:8700/uaa/logout.do?client_id=client-app&redirect=http://localhost:8701")
                 .and()
             .oauth2Client();
     }
