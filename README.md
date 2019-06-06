@@ -17,7 +17,7 @@ The distributed version of this application consists of several modules:
 - **client-app** - [Frontend application](https://samnewman.io/patterns/architectural/bff/).
 - **organization**
 - **department**
-- **validation** - This module is use to demonstrate the OAuth2 [client_credentials](https://tools.ietf.org/html/rfc6749#section-4.4) flow. **Department** service calls this service on its own behalf and not on behalf of the user.
+- **validation** - This module is used to demonstrate the OAuth2 [client_credentials](https://tools.ietf.org/html/rfc6749#section-4.4) flow. **Department** service calls this service on its own behalf and not on behalf of the user.
 
 
 Build the project:
