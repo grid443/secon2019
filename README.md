@@ -1,4 +1,4 @@
-Demo project for a [talk](https://2019.secon.ru/reports/bezopasnost-v-mikroservisah) at the SECON'19 conference about authN/authZ in distributed applications. Application functionality available based on user role:
+Demo project for [the talk at the SECON'19 conference](https://2019.secon.ru/reports/bezopasnost-v-mikroservisah) about authN/authZ in distributed applications. Application functionality available based on user role:
 
 - Get a list of organizations. Available for all user roles (accountant, auditor, org_auditor)
 - Get a list of departments for the specified organization. Available for accountant and auditor
